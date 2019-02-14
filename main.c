@@ -4,77 +4,49 @@ void drive_forward(int distance);
 void rightturn(int degrees);
 void leftturn(int degrees);
 
-// 0-15 seconds. Move firefighter from the starting zone to the rightmost side of the flood zone tape:
+int main()
+{
+    //add wait for light and stop in 118 secs
+    drive_forward(450);
+    leftturn(90);
+    drive_forward(800);
+    rightturn(90);
+    drive_forward(10);
+    ao();
+    return 0;
+}
 
-// Wait for light
-// Stop code after 118 seconds
-// Move forward towards firefighter
-// Close claw around firefighter
-// Move forward in the direction of the utility zone
-// Make a 90 degree left turn before utility zone
-// Move forward until the LEGO bot reaches the flood zone tape
-// Open the claw to set the firefighter in the flood zone
-// Turn 90 degrees to the right
+//int seconds or unit forward? using encoders? so void function (number of units forward or degrees)
+void drive_forward (int distance)
+       {
+	cmpc(0);
+    while(abs(gmpc(0))<distance)
+    {
+        mav(0,500);
+        mav(3,500);
+        msleep(distance/25*1000);
+    }
+       }
 
-// 15-30 seconds. Plow water from the flood zone into Water Reclamation Unit:
-
-// Close claw around Water Reclamation Unit
-// Make a 180 degree right turn
-// Move forward through flood zone to collect water poms
-// Stop at the black tape in front of the rightmost medical building
-
-// 30-45 seconds. Scan for burning medical center using color sensor and deposit any remaining water poms from the flood zone into the burning medical center zone:
-
-// Scan the rightmost building in the medical building for fire
-// If the building is burningb&
-// Move forward into the burning medical center zone
-// Move backwards to release the water poms from the plow
-// When burning building is not detectedb&
-// Make a 90 degree left turn
-// Move forward
-// Make a 90 degree right turn
-// Move forward into the burning medical center zone
-// Move backwards to release the water poms from the plow
-
-// 45-60 seconds. Move from the burning medical center to the utility zone to deposit the Water Reclamation Unit:
-
-// Make a 180 degree right turn
-// Move forward towards the Utility Zone
-// Make a 90 degree right turn to face the Utility Zone
-// Move forward until the black tape around the Utility Zone is reached
-// Continue move forward into the Utility Zone
-// Open claw around Water Reclamation Unit
-
-// 60-75 seconds. Move from the utility zone to the gas valve and pick up the gas valve using the claw servo:
-
-// Move backwards to the edge of the utility zone
-// Make a 90 degree right turn
-// Move forward along the edge of the black tape 
-// Make a 90 degree right turn
-// Move forward towards gas valve
-// Open claw around gas valve
-// Close claw around gas valve
-// Lift claw with gas valve
-
-// 75-90 seconds. With the gas valve still inside the claw, return to the utility zone:
-
-// Move backwards to the end of the black tape
-// Make a 180 degree right turn
-// Move forward to the edge of the utility zone
-
-// 90-105 seconds. Carefully place the gas valve onto the side of the T-shaped PVC pipe using the claw servo:
-
-// Make a 90 degree left turn
-// Move forward to line up parallel with the left side of the T-shaped PVC pipe
-// Make a 90 degree right turn
-// Move forward to T-shaped PVC pipe
-// Rotate claw 90 degrees left
-// Open claw around gas valve
-
-// 105-120 seconds. Connect both the right and left power lines with an arm actuated by a single servo:
-
-// Move backward to black tape of the utility zone
-// Make a 90 degree left turn
-// Move forward towards right power line
-// Raise arm
+void rightturn (int degrees)
+      {
+    cmpc(0);
+    while(abs(gmpc(0))<degrees)
+    {
+	mav(0,500);
+	mav(3,-500);
+	msleep(degrees*20);
+    }
+      }
+	
+void leftturn (int degrees)	
+      {
+    cmpc(0);
+    while(abs(gmpc(0))<degrees)
+    {
+	mav(0,-500);
+	mav(3,500);
+	msleep(degrees*20);
+    }
+      }
 
