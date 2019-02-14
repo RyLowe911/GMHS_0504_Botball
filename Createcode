@@ -1,0 +1,64 @@
+0-15 seconds
+//Connect create
+//Turn on light sensor
+//Shut down in 119 seconds
+//Drive forward until bumps building
+//Drive backward
+//Turn left ~135º
+
+15-30 seconds
+//Drive forward
+//Enable sweeper motor
+//Turn sweeper counterclockwise for 15 seconds
+
+30-45 
+//Turn right ~45º
+//Drive forward
+//Turn right ~45º
+//Drive forward and gather medical/food supplies
+//Turn right facing disaster relief zone
+//Drive forward until enters disaster relief zone
+//Drive backward
+//Turn right ~90º
+
+45-60
+//Turn 180º
+//Drive backwards
+//Lower lift
+//Close claw
+//Raise lift
+//Scan for burning skyscraper
+//Turn to face burning skyscraper
+//Drive backwards
+//Stop 3 inches away from skyscraper
+//Turn to face burning skyscraper
+
+60-75
+//Open claw
+//Turn right or left 90º
+//Drive forward
+//Turn left or right 90º
+//Lower lift
+//Close claw
+//Drive forward
+
+75-90
+//Turn 180º
+// Lower lift
+//Open claw
+//Close camera
+//Disable create
+
+Functions
+Int drive_forward
+Int drive_left
+Int drive_right
+Int drive_backward
+Int raise
+Int lower
+Int open
+Int close
+
+3 Motors
+1 Servo
+1 Plow
