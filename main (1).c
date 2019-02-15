@@ -1,6 +1,7 @@
 #include <kipr/botball.h>
 
 void drive_forward(int distance);
+void drive_backward(int distance);
 void rightturn(int degrees);
 void leftturn(int degrees);
 
