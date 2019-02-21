@@ -9,11 +9,11 @@ int main()
 {
     wait_for_light(3);
     shut_down_in(118);
-    drive_forward(450);
+    drive_forward(45);
     leftturn(90);
-    drive_forward(800);
+    drive_forward(80);
     rightturn(90);
-    drive_forward(10);
+    drive_forward(1);
     //end of 0-15 seconds
     //close claw
     rightturn(180);
