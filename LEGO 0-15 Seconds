@@ -8,16 +8,16 @@ void leftturn(int degrees);
 int main()
 {
     //add wait for light and stop in 118 secs
-    drive_forward(450);
+    drive_forward(45);
     leftturn(90);
-    drive_forward(800);
-    drive_backward(60);
+    drive_forward(80);
+    drive_backward(6);
     rightturn(90);
-    drive_forward(50);
+    drive_forward(5);
     rightturn(90);
-    drive_forward(60);
-    left_turn(90);
-    drive_forward(50);
+    drive_forward(6);
+    leftturn(90);
+    drive_forward(5);
     ao();
 }
 
