@@ -29,8 +29,8 @@ void drive_forward (int distance)
     while(abs(gmpc(0))<distance)
     {
         mav(0,500);
-        mav(3,500);
-        msleep(distance);
+        mav(3,515);
+        msleep(distance*152);
     }
        }
 
@@ -41,7 +41,8 @@ void drive_backward (int distance)
     {
         mav(0,-500);
         mav(3,-500);
-        msleep(distance);
+        msleep(distance*152);
+
     }
 }
 void rightturn (int degrees)
@@ -51,7 +52,7 @@ void rightturn (int degrees)
     {
 	mav(0,500);
 	mav(3,-500);
-	msleep(degrees*20);
+    msleep(degrees*25);
     }
       }
 	
@@ -61,7 +62,8 @@ void leftturn (int degrees)
     while(abs(gmpc(0))<degrees)
     {
 	mav(0,-500);
-	mav(3,500);
-	msleep(degrees*20);
+	mav(3,515);
+    msleep(degrees*25);
     }
       }
+
