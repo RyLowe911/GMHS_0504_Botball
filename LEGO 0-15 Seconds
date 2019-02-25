@@ -7,17 +7,23 @@ void leftturn(int degrees);
 
 int main()
 {
-    //add wait for light and stop in 118 secs
-    drive_forward(45);
+     //add wait for light and stop in 118 secs
+    enable_servos();
+    set_servo_position(3,600);
+    drive_forward(47);
     leftturn(90);
-    drive_forward(80);
-    drive_backward(6);
+    drive_forward(72);
+    drive_backward(20);
     rightturn(90);
-    drive_forward(5);
-    rightturn(90);
-    drive_forward(6);
+    drive_forward(10);
     leftturn(90);
-    drive_forward(5);
+    drive_forward(20);
+    leftturn(90);
+    drive_forward(10);
+    msleep(10);
+    set_servo_position(3,1615);
+    drive_forward(50);
+    disable_servos();
     ao();
     return 0;
 }
