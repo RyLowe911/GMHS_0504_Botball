@@ -1,0 +1,21 @@
+#include <kipr/botball.h>
+void drive_forward(int distance);
+int main()
+{
+//	create_connect(); 
+//	drive_forward(36);
+	mav(0,500);
+    msleep(10000);
+	ao();
+	create_disconnect();
+    return 0;
+}
+void drive_forward(int distance)
+{
+ set_create_distance(0);
+    while(abs(get_create_distance())<distance)
+    {
+        create_drive_direct(150,155);
+        msleep(10);
+    }
+}
