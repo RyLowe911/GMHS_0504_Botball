@@ -1,11 +1,16 @@
 #include <kipr/botball.h>
 void drive_forward(int distance);
+void drive_backward(int distance);
+void turn_left(int degrees);
+void turn_right(int degrees);
 int main()
 {
 //	create_connect(); 
-//	drive_forward(36);
 	mav(0,500);
     msleep(10000);
+    turn_left(0);
+    drive_backward(0);
+    turn_right(0);
 	ao();
 	create_disconnect();
     return 0;
@@ -18,4 +23,34 @@ void drive_forward(int distance)
         create_drive_direct(150,155);
         msleep(10);
     }
+}
+void drive_backward(int distance)
+{
+ set_create_distance(0);
+    while(abs(get_create_distance())<distance)
+    {
+        create_drive_direct(-150,-155);
+      	msleep(10);
+    }
+    create_stop();
+}
+void turn_left(int degrees)
+{
+ set_create_total_angle(0);
+    while(abs(get_create_total_angle())<degrees)
+    {
+        create_drive_direct(150,-150);
+        msleep(10);
+    }
+    create_stop();
+}
+void turn_right(int degrees)
+{
+ set_create_total_angle(0);
+    while(abs(get_create_total_angle())<degrees)
+    {
+        create_drive_direct(-150,150);
+        msleep(10);
+    }
+    create_stop();
 }
