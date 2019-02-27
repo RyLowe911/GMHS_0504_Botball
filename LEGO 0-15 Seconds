@@ -7,17 +7,18 @@ void leftturn(int degrees);
 
 int main()
 {
-     //add wait for light and stop in 118 secs
+      //add wait for light and stop in 118 secs
     enable_servos();
     set_servo_position(3,600);
-    drive_forward(47);
+    drive_forward(45);
     leftturn(90);
-    drive_forward(72);
+    drive_forward(50);
+    leftturn(5);
     drive_backward(20);
     rightturn(90);
-    drive_forward(10);
+    drive_forward(12);
     leftturn(90);
-    drive_forward(20);
+    drive_forward(17);
     leftturn(90);
     drive_forward(10);
     msleep(10);
@@ -34,8 +35,8 @@ void drive_forward (int distance)
 	cmpc(0);
     while(abs(gmpc(0))<distance)
     {
-        mav(0,500);
-        mav(3,515);
+        mav(0,700);
+        mav(3,720);
         msleep(distance*152);
     }
        }
@@ -45,8 +46,8 @@ void drive_backward (int distance)
     cmpc(0);
     while(abs(gmpc(0))<distance)
     {
-        mav(0,-500);
-        mav(3,-500);
+        mav(0,-700);
+        mav(3,-720);
         msleep(distance*152);
 
     }
@@ -56,9 +57,9 @@ void rightturn (int degrees)
     cmpc(0);
     while(abs(gmpc(0))<degrees)
     {
-	mav(0,500);
-	mav(3,-500);
-    msleep(degrees*25);
+	mav(0,700);
+	mav(3,-715);
+    msleep(degrees*14);
     }
       }
 	
@@ -67,9 +68,9 @@ void leftturn (int degrees)
     cmpc(0);
     while(abs(gmpc(0))<degrees)
     {
-	mav(0,-500);
-	mav(3,515);
-    msleep(degrees*25);
+	mav(0,-700);
+	mav(3,715);
+    msleep(degrees*14);
     }
       }
 
