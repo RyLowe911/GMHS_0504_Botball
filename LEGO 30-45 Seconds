@@ -7,16 +7,25 @@ void leftturn(int degrees);
 
 int main()
 {
-    //scan the rightmost building for fire
-    //if the building is burning
-    if //color camera thingy is true
-    	drive_backward(20);
-    else //drive to left?
-        leftturn(90);
-    	drive_forward(25);
-    	rightturn(90);
-    	drive_backward(20);
-    return 0;
+    drive_backward(5);
+    leftturn(90); 
+    drive_forward(30);
+    enable_servos();
+    set_servo_position(3,650);
+    set_servo_position(1,40);
+    drive_backward(5);
+    leftturn(90);
+    drive_forward(145);
+    rightturn(90);
+    drive_forward(50);
+    drive_backward(10);
+    rightturn(180);
+    set_servo_position(1,60);
+    set_servo_position(1,40);
+    set_servo_position(1,60);
+    set_servo_position(1,40);
+    disable_servos();
+    ao();
 }
 
 void drive_forward (int distance)
