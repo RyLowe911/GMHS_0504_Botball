@@ -6,8 +6,8 @@ void turboblast(int distance);
 
 int main()
 {
-    wait_for_light(0);
-	  msleep(500);
+    //wait_for_light(0);
+	msleep(500);
     shut_down_in(118);
     enable_servos();
     set_servo_position(1,1613);
@@ -28,20 +28,19 @@ int main()
     drive_forward(50);
     drive_backward(1);
     set_servo_position(3,650);
-    leftturn(90); 
+    leftturn(95); 
     drive_forward(10);
     //enable_servos
     set_servo_position(1,95);
-    drive_backward(20);
+    drive_backward(15);
     set_servo_position(1,900);
-    drive_forward(30);
-    leftturn(90);
-    turboblast(60);
-    turboblast(60);
+    drive_forward(25);
+    leftturn(95);
+    turboblast(105); 
     rightturn(90);
     drive_forward(45);
     drive_backward(12);
-    rightturn(180);
+    rightturn(170);
     set_servo_position(1,200);
     set_servo_position(1,40);
     set_servo_position(1,200);
@@ -102,7 +101,7 @@ void turboblast (int distance)
 	cmpc(0);
     while(abs(gmpc(0))<distance)
     {
-        mav(0,900);
+        mav(0,1000);
         mav(3,1000);
         msleep(distance*152);
     }
