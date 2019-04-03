@@ -1,0 +1,95 @@
+void drive_forward(int distance);
+void drive_backward (int distance);
+void rightturn(int degrees);
+void leftturn(int degrees);
+
+int main()
+{
+    wait_for_light(0);
+	  msleep(500);
+    shut_down_in(118);
+    enable_servos();
+    set_servo_position(1,1613);
+    set_servo_position(3,600);
+    drive_forward(27);
+    rightturn(90);
+    drive_forward(46);
+    leftturn(90);
+    drive_forward(34);
+    msleep(500);
+    set_servo_position(3,1615);
+    msleep(500);
+    leftturn(62);
+    msleep(500);
+    drive_forward(42);
+    leftturn(10);
+    drive_forward(47);
+    leftturn(10);
+    drive_forward(51);
+    drive_backward(2);
+    set_servo_position(3,600);
+    msleep(100);
+    //add 30-45 seconds
+    drive_backward(5);
+	  drive_backward(5);
+    leftturn(90); 
+    drive_forward(10);
+    enable_servos();
+    set_servo_position(3,650);
+    set_servo_position(1,40);
+    leftturn(90);
+    drive_forward(145);
+    leftturn(90);
+    drive_backward(10);
+    msleep(500);
+    set_servo_position(1,2047);
+    drive_forward(50);
+    set_servo_position(3,1660);
+    disable_servos();
+    ao();
+    return 0;
+}
+
+void drive_forward (int distance)
+       {
+	cmpc(0);
+    while(abs(gmpc(0))<distance)
+    {
+        mav(0,500);
+        mav(3,500);
+        msleep(distance/25*1000);
+    }
+       }
+
+void drive_backward (int distance)
+{
+    cmpc(0);
+    while(abs(gmpc(0))<distance)
+    {
+        mav(0,-500);
+        mav(3,-500);
+        msleep(distance/25*1000);
+    }
+}
+void rightturn (int degrees)
+      {
+    cmpc(0);
+    while(abs(gmpc(0))<degrees)
+    {
+	mav(0,500);
+	mav(3,-500);
+	msleep(degrees*20);
+    }
+      }
+	
+void leftturn (int degrees)	
+      {
+    cmpc(0);
+    while(abs(gmpc(0))<degrees)
+    {
+	mav(0,-500);
+	mav(3,500);
+	msleep(degrees*20);
+    }
+      }
+
