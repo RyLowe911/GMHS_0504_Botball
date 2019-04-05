@@ -1,0 +1,115 @@
+#include <kipr/botball.h>
+
+void drive_forward(int distance);
+void drive_backward (int distance);
+void rightturn(int degrees);
+void leftturn(int degrees);
+void turboblast(int distance);
+
+int main()
+{
+    //wait_for_light(0);
+	msleep(500);
+    //shut_down_in(119);
+    enable_servos();
+    set_servo_position(0,1613);
+    set_servo_position(3,600);
+    drive_forward(22);
+    rightturn(85);
+    drive_forward(40);
+    leftturn(95);
+    drive_forward(28);
+    //mslep
+    set_servo_position(3,1615);
+    //msleep
+    leftturn(72);
+    msleep(250);
+    drive_forward(36);
+    drive_forward(3);
+    leftturn(8);
+    drive_forward(14);
+    leftturn(7);
+    drive_forward(54);
+    drive_backward(1);
+    set_servo_position(3,650);
+    leftturn(95); 
+    drive_forward(8);
+    //enable_servos
+    set_servo_position(0,90);
+    drive_backward(15);
+    set_servo_position(0,1000);
+    drive_forward(19);
+    leftturn(90);
+    //turboblast encoders? Only trouble is inconsistency in turboblasting
+    turboblast(108);
+    rightturn(60);
+    drive_forward(14);
+    drive_backward(9);
+    rightturn(190);
+    set_servo_position(0,150);
+    msleep(500);
+    set_servo_position(0,1000);
+    msleep(500);
+    set_servo_position(0,150);
+    msleep(500);
+    disable_servos();
+    ao();
+    return 0;
+    
+}
+
+//int seconds or unit forward? using encoders? so void function (number of units forward or degrees)
+void drive_forward (int distance)
+{
+	cmpc(0);
+    while(abs(gmpc(0))<distance)
+    {
+        mav(0,890);
+        mav(3,940);
+        msleep(distance*152);
+    }
+}
+
+void drive_backward (int distance)
+{
+    cmpc(0);
+    while(abs(gmpc(0))<distance)
+    {
+        mav(0,-890);
+        mav(3,-940);
+        msleep(distance*152);
+    }
+}
+
+void rightturn (int degrees)
+{
+    cmpc(0);
+    while(abs(gmpc(0))<degrees)
+    {
+	mav(0,500);
+	mav(3,-500);
+    msleep(degrees*20);
+    }
+}
+	
+void leftturn (int degrees)	
+{
+    cmpc(0);
+    while(abs(gmpc(0))<degrees)
+    {
+	mav(0,-500);
+	mav(3,500);
+    msleep(degrees*21);
+	}
+}
+
+void turboblast (int distance)
+{
+	cmpc(0);
+    while(abs(gmpc(0))<distance)
+    {
+        mav(0,957);
+        mav(3,1000);
+        msleep(distance*152);
+    }
+}
